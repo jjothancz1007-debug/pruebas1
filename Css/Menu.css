@@ -1,0 +1,105 @@
+:root{
+  /* Paleta inspirada en el logo */
+  --rosa:#d8a9aa;
+  --beige:#d9b99b;
+  --verde:#bfe7a8;
+  --naranja:#f4b183;
+  --texto:#2b2624;
+  --fondo:#fffdfb;
+}
+
+html, body{
+  height:100%;
+  margin:0;
+  background:var(--fondo);
+  color:var(--texto);
+  font-family:system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Lienzo centrado y fondo con círculos */
+.wrap{
+  min-height:100%;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  padding:24px;
+}
+.bg-circle{
+  position:absolute;
+  border-radius:999px;
+  filter:blur(2px);
+  opacity:.35;
+  z-index:0;
+}
+.c1{ width:420px; height:420px; background:var(--rosa);  left:-120px; bottom:-140px; }
+.c2{ width:300px; height:300px; background:var(--beige); right:-80px; top:-70px; }
+.c3{ width:220px; height:220px; background:var(--verde); right:80px; bottom:90px; }
+.c4{ width:180px; height:180px; background:var(--naranja); left:55%; top:35%; transform:translateX(-50%); opacity:.28; }
+
+/* ===== Menú ===== */
+.menu{ z-index:1; width:min(1100px, 94vw); }
+.menu__titulo{
+  margin:0 0 22px 0;
+  text-align:center;
+  font-size:clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
+  letter-spacing:.3px;
+}
+
+/* Grid 4 x 2 (4 arriba, 4 abajo) */
+.menu__grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:18px;
+}
+
+/* Tarjeta */
+.card{
+  display:block;
+  background:#ffffffcc;
+  border:1px solid #00000010;
+  border-radius:22px;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  box-shadow: 0 6px 16px #00000014;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  backdrop-filter: blur(2px);
+}
+.card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px #00000020;
+  border-color:#00000020;
+}
+
+/* Imagen y rótulo */
+.card__fig{ margin:0; position:relative; aspect-ratio: 1 / 1; }
+.card__img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter: saturate(.95);
+}
+.card__caption{
+  position:absolute; left:10px; right:10px; bottom:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  background: linear-gradient(180deg, #ffffffc8, #ffffffef);
+  border:1px solid #00000014;
+  text-align:center;
+  font-weight:600;
+  font-size: clamp(.95rem, .8rem + .3vw, 1.05rem);
+}
+
+/* Link volver */
+.menu__back{ text-align:center; margin-top:16px; }
+.menu__back a{ color:var(--texto); text-decoration:none; font-weight:500; }
+
+/* Responsivo */
+@media (max-width: 992px){
+  .menu__grid{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px){
+  .menu__grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 420px){
+  .menu__grid{ grid-template-columns: 1fr; }
+}
